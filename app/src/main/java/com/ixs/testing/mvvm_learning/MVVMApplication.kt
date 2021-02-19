@@ -4,8 +4,14 @@ import android.app.Application
 import com.ixs.testing.mvvm_learning.data.db.AppDatabase
 import com.ixs.testing.mvvm_learning.data.network.MyApi
 import com.ixs.testing.mvvm_learning.data.network.NetworkInterceptor
+import com.ixs.testing.mvvm_learning.data.preference.PreferenceProvider
+import com.ixs.testing.mvvm_learning.data.repository.QuotesRepo
 import com.ixs.testing.mvvm_learning.data.repository.UserRepo
 import com.ixs.testing.mvvm_learning.ui.auth.AuthViewModelFactory
+import com.ixs.testing.mvvm_learning.ui.home.profile.ProfileViewModel
+import com.ixs.testing.mvvm_learning.ui.home.profile.ProfileViewModelFactory
+import com.ixs.testing.mvvm_learning.ui.home.quotes.QuotesViewModel
+import com.ixs.testing.mvvm_learning.ui.home.quotes.QuotesViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -21,8 +27,12 @@ class MVVMApplication : Application(), KodeinAware{
         bind() from singleton {NetworkInterceptor(instance())}
         bind() from singleton { MyApi(instance()) }
         bind() from singleton { AppDatabase(instance()) }
+        bind() from singleton { PreferenceProvider(instance()) }
         bind() from singleton { UserRepo(instance(),instance()) }
+        bind() from singleton { QuotesRepo(instance(),instance(),instance()) }
         bind() from provider { AuthViewModelFactory(instance()) }
+        bind() from provider { ProfileViewModelFactory(instance()) }
+        bind() from provider { QuotesViewModelFactory(instance()) }
     }
 
 
