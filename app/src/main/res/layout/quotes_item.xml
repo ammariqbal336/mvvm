@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="quote"
+            type="com.ixs.testing.mvvm_learning.data.db.entities.Quotes" />
+    </data>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:background="#FEFEFE"
+        android:layout_height="wrap_content">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_margin="5dp"
+           android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvquotes"
+
+            android:text="@{quote.quote}"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvauthor"
+            android:layout_gravity="end"
+            android:layout_marginTop="2dp"
+            android:text="@{quote.author}"/>
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="?colorPrimary"
+               android:layout_margin="5dp"/>
+       </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
