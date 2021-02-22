@@ -3,26 +3,40 @@ package com.ixs.testing.mvvm_learning.ui.auth
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
+import com.ixs.testing.mvvm_learning.data.db.entities.User
+import com.ixs.testing.mvvm_learning.data.network.responses.AuthResponse
 import com.ixs.testing.mvvm_learning.data.repository.UserRepo
 import com.ixs.testing.mvvm_learning.utils.ApiExceptions
 
 import com.ixs.testing.mvvm_learning.utils.Coroutine
 import com.ixs.testing.mvvm_learning.utils.NoNetworkError
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
+import retrofit2.Response
 
 class AuthViewModel(
     private var userRepo: UserRepo
 ) : ViewModel(){
-    var name : String? = null
-    var email : String? = null
-    var password : String? = null
-    var confirmpassword : String? = null
 
-    var authListener :AuthListener? = null
 
     fun getUser()  = userRepo.getLoginUser()
 
-    fun onButtonClick(view : View){
+    suspend fun userLogin(
+        email : String,
+        password : String
+    ) = withContext(Dispatchers.IO){ userRepo?.LoginUser(email,password)}
+
+    suspend fun userSignUp(
+        name : String,
+        email : String,
+        password: String
+    ) = withContext(Dispatchers.IO){ userRepo?.UserSignUp(name,email,password)}
+
+    suspend fun saveLoggedInUser(user : User) = userRepo.SaveUser(user)
+
+   /* fun onButtonClick(view : View){
         authListener?.onStarted()
         if(email.isNullOrEmpty() || password.isNullOrEmpty()){
             authListener?.onFailed("Invalid email or password")
@@ -109,5 +123,5 @@ class AuthViewModel(
         }
 
 
-    }
+    }*/
 }

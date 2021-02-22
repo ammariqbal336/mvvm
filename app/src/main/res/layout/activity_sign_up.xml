@@ -5,12 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <data>
-        <variable
-            name="viewmodel"
-            type="com.ixs.testing.mvvm_learning.ui.auth.AuthViewModel" />
 
-    </data>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:id="@+id/root_layout"
         android:layout_width="match_parent"
@@ -70,7 +65,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:text="@={viewmodel.name}"
+
                     android:id="@+id/edit_text_name"
                     android:hint="Belal Khan"
                     android:inputType="text"
@@ -83,7 +78,6 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:text="@={viewmodel.email}"
                     android:id="@+id/edit_text_email"
                     android:hint="belal@gmail.com"
                     android:inputType="textEmailAddress"
@@ -96,7 +90,7 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:text="@={viewmodel.password}"
+
                     android:id="@+id/edit_text_password"
                     android:inputType="textPassword"
                     android:hint="password"
@@ -109,7 +103,7 @@
                     android:layout_height="match_parent"/>
 
                 <EditText
-                    android:text="@={viewmodel.confirmpassword}"
+
                     android:id="@+id/edit_text_password_confirm"
                     android:inputType="textPassword"
                     android:hint="confirm password"
@@ -131,7 +125,7 @@
                     android:layout_height="wrap_content"/>
 
                 <Button
-                    android:onClick="@{viewmodel::onSignUp}"
+
                     android:id="@+id/button_sign_up"
                     android:layout_gravity="center_horizontal"
                     android:textAllCaps="false"
@@ -142,7 +136,7 @@
             </LinearLayout>
 
             <TextView
-                android:onClick="@{viewmodel::LoginScreen}"
+
                 android:id="@+id/text_view_login"
                 android:layout_marginTop="12dp"
                 android:textColor="@color/colorPrimary"
